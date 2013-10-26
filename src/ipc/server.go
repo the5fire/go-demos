@@ -25,7 +25,7 @@ type IpcServer struct {
 }
 
 func NewIpcServer(server Server) *IpcServer {
-    return &IpcServer(server)
+    return &IpcServer{server}
 }
 
 func (server *IpcServer)Connect() chan string {

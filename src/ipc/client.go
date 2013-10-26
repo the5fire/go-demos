@@ -11,11 +11,11 @@ type IpcClient struct {
 func NewIpcClient(server *IpcServer) *IpcClient {
     c := server.Connect()
 
-    return &IpcClient(c)
+    return &IpcClient{c}
 }
 
 func (client *IpcClient)Call(method, params string)(resp *Response, err error) {
-    req := &Request(method, params)
+    req := &Request{method, params}
 
     var b []byte
     b, err = json.Marshal(req)
