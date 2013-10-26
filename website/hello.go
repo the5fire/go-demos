@@ -1,13 +1,21 @@
 package main
 
 import (
-    "io"
     "log"
     "net/http"
+    "html/template"
 )
 
 func indexHandler(w http.ResponseWriter, r *http.Request) {
-    io.WriteString(w, "hello, World!")
+    tmpl, err := template.ParseFiles("index.html")
+    if err != nil {
+        http.Error(w,  err.Error(), http.StatusInternalServerError)
+        return
+    }
+    locals := make(map[string]interface{})
+    locals["langName"] = "Golang"
+    tmpl.Execute(w, locals)
+    return
 }
 
 func main() {
