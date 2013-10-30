@@ -5,7 +5,18 @@
         <title>Hello Golang</title>
     </head>
     <body>
-       Hello {{ $.langName }}
+       Hello, UserList
+    <table border=1>
+        <tr>
+            <th>ID</th><th>Name</th>
+        </tr>
+       {{ range .users }}
+           <tr>
+               <td>{{ .ID }}</td><td>{{ .Name }}</td>
+           </tr>
+       {{ end }}
+   </table>
+
     </body>
 </html>
 
