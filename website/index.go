@@ -43,7 +43,7 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 	users := []User{}
 
 	for rows.Next() {
-		err = rows.Scan(&id, &name) //扫每一行，并把字段的值赋到id和newstitle
+		err = rows.Scan(&id, &name) //扫每一行
 		if err == nil {
 			fmt.Println(id, name)
 			users = append(users, User{id, name})
